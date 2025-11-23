@@ -8,12 +8,10 @@
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8763788932694623" crossorigin="anonymous"></script>
 
-    <!-- Enlace al CSS -->
     <link rel="stylesheet" href="estilo.css" />
 </head>
 <body>
 
-    <!-- ENCABEZADO -->
     <header>
         <h1>Mundo Smartphone</h1>
         <nav>
@@ -22,26 +20,58 @@
         </nav>
     </header>
 
-    <!-- HERO CON TU IMAGEN -->
     <section class="hero">
         <img src="Captura de pantalla 2025-11-23 142127.png" alt="Banner" />
     </section>
 
-    <!-- SECCIÓN DE PRODUCTOS -->
     <main>
         <h2>Productos Disponibles</h2>
 
         <div id="productos" class="grid-productos">
+
+            <!-- iPhone 15 Pro -->
             <div class="producto">
-                <img src="https://via.placeholder.com/200" alt="Producto">
-                <h3>Smartphone Genérico</h3>
-                <p class="precio">$150</p>
-                <button onclick="agregarAlCarrito('Smartphone Genérico',150)">Agregar al Carrito</button>
+                <img src="/mnt/data/A_2D_digital_image_showcases_a_mobile_e-commerce_w.png" alt="iPhone 15 Pro">
+                <h3>iPhone 15 Pro</h3>
+                <p class="precio">$999</p>
+                <button onclick="agregarAlCarrito('iPhone 15 Pro',999)">Agregar al Carrito</button>
             </div>
+
+            <!-- Samsung Galaxy A54 -->
+            <div class="producto">
+                <img src="/mnt/data/A_2D_digital_image_showcases_a_mobile_e-commerce_w.png" alt="Samsung Galaxy A54">
+                <h3>Samsung Galaxy A54</h3>
+                <p class="precio">$350</p>
+                <button onclick="agregarAlCarrito('Samsung Galaxy A54',350)">Agregar al Carrito</button>
+            </div>
+
+            <!-- Xiaomi Redmi Note 13 -->
+            <div class="producto">
+                <img src="/mnt/data/A_2D_digital_image_showcases_a_mobile_e-commerce_w.png" alt="Xiaomi Redmi Note 13">
+                <h3>Xiaomi Redmi Note 13</h3>
+                <p class="precio">$220</p>
+                <button onclick="agregarAlCarrito('Xiaomi Redmi Note 13',220)">Agregar al Carrito</button>
+            </div>
+
+            <!-- Auriculares Bluetooth -->
+            <div class="producto">
+                <img src="/mnt/data/A_2D_digital_image_showcases_a_mobile_e-commerce_w.png" alt="Auriculares Bluetooth">
+                <h3>Auriculares Bluetooth</h3>
+                <p class="precio">$50</p>
+                <button onclick="agregarAlCarrito('Auriculares Bluetooth',50)">Agregar al Carrito</button>
+            </div>
+
+            <!-- Smartwatch Genérico -->
+            <div class="producto">
+                <img src="/mnt/data/A_2D_digital_image_showcases_a_mobile_e-commerce_w.png" alt="Smartwatch Genérico">
+                <h3>Smartwatch Genérico</h3>
+                <p class="precio">$120</p>
+                <button onclick="agregarAlCarrito('Smartwatch Genérico',120)">Agregar al Carrito</button>
+            </div>
+
         </div>
     </main>
 
-    <!-- CARRITO -->
     <section id="carritoModal" class="modal">
         <div class="modal-contenido">
             <span id="cerrarCarrito" class="cerrar">&times;</span>
@@ -51,7 +81,6 @@
         </div>
     </section>
 
-    <!-- SCRIPT -->
     <script src="script.js"></script>
 
 </body>
