@@ -1,28 +1,141 @@
-import js from '@eslint/js';
-import globals from 'globals';
-import reactHooks from 'eslint-plugin-react-hooks';
-import reactRefresh from 'eslint-plugin-react-refresh';
-import tseslint from 'typescript-eslint';
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
 
-export default tseslint.config(
-  { ignores: ['dist'] },
-  {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
-    files: ['**/*.{ts,tsx}'],
-    languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
-    },
-    plugins: {
-      'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
-    },
-    rules: {
-      ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
-    },
-  }
-);
+body {
+    background: #f4f6fa;
+}
+
+.navbar {
+    width: 100%;
+    background: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.07);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+.navbar input {
+    padding: 12px;
+    width: 420px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.icon {
+    font-size: 28px;
+}
+
+.container {
+    display: flex;
+    margin-top: 30px;
+    padding: 20px 40px;
+}
+
+/* FILTROS */
+.filtros {
+    width: 260px;
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    height: fit-content;
+}
+
+.filtros h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.filtros select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.checkboxes label {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+/* PRODUCTOS */
+.productos {
+    flex: 1;
+    padding-left: 40px;
+}
+
+.grid {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.09);
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+}
+
+.card img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 18px;
+}
+
+.badge {
+    position: absolute;
+    background: rgb(33,96,255);
+    padding: 6px 14px;
+    border-radius: 20px;
+    color: white;
+    margin: 10px;
+    font-size: 14px;
+}
+
+.descuento {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: rgb(255,65,65);
+    padding: 6px 14px;
+    border-radius: 20px;
+    color: white;
+    font-size: 14px;
+}
+
+.precio {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.precio-old {
+    text-decoration: line-through;
+    color: gray;
+}
+
