@@ -3,57 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhoneStore</title>
-    <link rel="stylesheet" href="estilo.css">
+    <title>Motívate Hoy</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <header class="navbar">
-        <div class="logo">
-            <span class="icon">📱</span> PhoneStore
-        </div>
-
-        <input type="text" id="buscar" placeholder="Buscar teléfonos..." />
-
-        <div class="cart">
-            🛒
-        </div>
+    <!-- HEADER -->
+    <header>
+        <h1>Motívate Hoy</h1>
+        <p class="sub">Pequeños pasos, grandes resultados</p>
     </header>
 
-    <main class="container">
+    <!-- FRASE MOTIVADORA -->
+    <section class="frase-box">
+        <h2 id="frase">Haz clic en el botón para inspirarte ✨</h2>
+        <button onclick="nuevaFrase()">Nueva frase</button>
+    </section>
 
-        <!-- FILTROS -->
-        <aside class="filtros">
-            <h2>Filtros</h2>
-
-            <label for="ordenar">Ordenar por</label>
-            <select id="ordenar">
-                <option value="destacados">Destacados</option>
-                <option value="precioAsc">Precio: Menor a Mayor</option>
-                <option value="precioDesc">Precio: Mayor a Menor</option>
-            </select>
-
-            <h3>Marca</h3>
-
-            <label><input type="checkbox" class="marca" value="Apple"> Apple</label>
-            <label><input type="checkbox" class="marca" value="Samsung"> Samsung</label>
-            <label><input type="checkbox" class="marca" value="Google"> Google</label>
-            <label><input type="checkbox" class="marca" value="OnePlus"> OnePlus</label>
-        </aside>
-
-        <!-- PRODUCTOS -->
-        <section class="productos">
-            <h1>Todos los Productos</h1>
-            <p id="cantidad"></p>
-
-            <div id="listaProductos" class="grid"></div>
-        </section>
-
-    </main>
+    <!-- FOOTER -->
+    <footer>
+        <p>Creado con ❤️ por Ti</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
-</html>
-
 </html>
