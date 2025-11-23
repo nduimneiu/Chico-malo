@@ -1,22 +1,58 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Modern Customized Cell Phone Store</title>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhoneStore</title>
 
-    <meta property="og:image" content="https://bolt.new/static/og_default.png">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://bolt.new/static/og_default.png">
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
 
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8763788932694623"
-     crossorigin="anonymous"></script>
+    <!-- NAV -->
+    <nav class="navbar">
+        <div class="logo">
+            <span class="icon">📱</span> <h2>PhoneStore</h2>
+        </div>
 
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+        <input type="text" id="searchInput" placeholder="Buscar teléfonos...">
+
+        <div class="carrito-icon">
+            🛒
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- FILTROS -->
+        <aside class="filtros">
+            <h3>Filtros</h3>
+
+            <label>Ordenar por</label>
+            <select id="ordenar">
+                <option value="destacados">Destacados</option>
+                <option value="precio_mayor">Precio mayor</option>
+                <option value="precio_menor">Precio menor</option>
+            </select>
+
+            <h4>Marca</h4>
+            <div class="checkboxes">
+                <label><input type="checkbox" value="Apple"> Apple</label>
+                <label><input type="checkbox" value="Samsung"> Samsung</label>
+                <label><input type="checkbox" value="Google"> Google</label>
+                <label><input type="checkbox" value="OnePlus"> OnePlus</label>
+            </div>
+        </aside>
+
+        <!-- PRODUCTOS -->
+        <main class="productos">
+            <h2>Todos los Productos</h2>
+            <p>8 productos disponibles</p>
+
+            <div id="productosContainer" class="grid"></div>
+        </main>
+    </div>
+
+<script src="script.js"></script>
+</body>
 </html>
