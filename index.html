@@ -1,283 +1,144 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JMR Asociados | Tienda Tecnológica</title>
 
-<title>JMR Asociados | Tienda Tecnológica Online</title>
-<meta name="description" content="Tienda tecnológica online con pagos seguros PayPal, productos modernos y atención confiable.">
-
-<!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8763788932694623"
 crossorigin="anonymous"></script>
 
 <style>
-:root{--brand:#0a66c2}
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;color:#111;background:#fff}
+:root{--brand:#0a66c2;--dark:#084a8f}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Segoe UI,Arial;background:#f5f7fa}
 
-header{
-  background:linear-gradient(90deg,var(--brand),#3aa0ff);
-  color:#fff;
-}
+header{background:linear-gradient(135deg,var(--brand),#3aa0ff);color:#fff;padding:15px}
+header .container{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.logo{font-size:24px;font-weight:800}
+.search input{padding:10px;border-radius:8px;border:none}
+.cart-btn{margin-left:auto;background:#fff;color:var(--brand);padding:10px 20px;border:none;border-radius:8px;font-weight:700;cursor:pointer}
 
-.container{max-width:1100px;margin:auto;padding:20px}
-.nav{display:flex;align-items:center;gap:15px}
-.logo{font-weight:800;font-size:22px}
+.hero{background:#667eea;color:#fff;padding:60px 20px;text-align:center}
+.hero h1{font-size:40px;margin-bottom:15px}
 
-.search input{
-  padding:12px;
-  border-radius:10px;
-  border:0;
-  width:100%;
-}
+.container{max-width:1200px;margin:auto;padding:30px}
 
-.cart-btn{
-  background:rgba(255,255,255,.25);
-  border:0;
-  color:#fff;
-  padding:10px 16px;
-  border-radius:10px;
-  cursor:pointer;
-}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px}
 
-/* HERO */
-.hero{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:40px;
-  align-items:center;
-  padding:50px 0;
-}
+.card{background:#fff;border-radius:15px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,.1);transition:.3s}
+.card:hover{transform:translateY(-5px)}
+.card img{width:100%;height:200px;object-fit:cover}
+.card .info{padding:20px}
+.card h3{margin-bottom:8px}
+.card p{font-size:14px;color:#666}
+.price{font-size:22px;font-weight:800;color:var(--brand);margin:10px 0}
+.add{background:var(--brand);color:#fff;border:none;width:100%;padding:12px;border-radius:8px;font-weight:700;cursor:pointer}
+.add:hover{background:var(--dark)}
 
-.hero h1{
-  font-size:40px;
-  margin:0 0 15px;
-}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);justify-content:center;align-items:center}
+.modal-content{background:#fff;padding:25px;border-radius:15px;width:90%;max-width:500px}
+.cart-item{display:flex;justify-content:space-between;margin-bottom:10px}
+.close{background:#999;color:#fff;border:none;width:100%;padding:12px;border-radius:8px;margin-top:15px}
 
-.hero p{
-  font-size:18px;
-  color:#333;
-}
-
-.hero img{
-  width:100%;
-  border-radius:20px;
-  box-shadow:0 25px 50px rgba(0,0,0,.25);
-}
-
-/* PRODUCTOS */
-.products{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-  gap:20px;
-  margin-top:20px;
-}
-
-.card{
-  border:1px solid #eee;
-  border-radius:14px;
-  background:#fff;
-  overflow:hidden;
-  transition:.3s;
-}
-
-.card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 10px 25px rgba(0,0,0,.12);
-}
-
-.card img{
-  width:100%;
-  height:160px;
-  object-fit:cover;
-}
-
-.card .info{padding:14px}
-.price{font-weight:700;margin-top:8px}
-
-.add{
-  background:var(--brand);
-  color:#fff;
-  border:0;
-  padding:10px;
-  border-radius:8px;
-  width:100%;
-  margin-top:10px;
-  cursor:pointer;
-}
-
-/* TEXTOS */
-.text-block{
-  margin-top:40px;
-  background:#fafafa;
-  padding:25px;
-  border-radius:14px;
-  border:1px solid #eee;
-}
-
-footer{
-  margin-top:40px;
-  padding:20px;
-  border-top:1px solid #eee;
-  text-align:center;
-  color:#666;
-}
-
-@media(max-width:900px){
-  .hero{grid-template-columns:1fr}
-}
+footer{background:#2c3e50;color:#fff;text-align:center;padding:25px;margin-top:60px}
 </style>
 </head>
 
 <body>
 
 <header>
-  <div class="container nav">
+  <div class="container">
     <div class="logo">JMR Asociados</div>
-    <div class="search" style="flex:1">
-      <input placeholder="Buscar productos...">
-    </div>
-    <button class="cart-btn" id="cartBtn">
-      🛒 Carrito (<span id="cartCount">0</span>)
-    </button>
+    <div class="search"><input placeholder="Buscar productos"></div>
+    <button class="cart-btn" id="cartBtn">🛒 Carrito (<span id="cartCount">0</span>)</button>
   </div>
 </header>
 
-<main class="container">
-
-<!-- HERO CON IMAGEN FUNCIONANDO -->
 <section class="hero">
-  <div>
-    <h1>Tienda Tecnológica Confiable</h1>
-    <p>
-      Compra productos tecnológicos modernos con pagos seguros mediante PayPal
-      y atención personalizada en JMR Asociados.
-    </p>
-  </div>
-
-  <img src="tienda-jmr.jpg" alt="Tienda tecnológica JMR Asociados">
+  <h1>Tecnología que Impulsa tu Futuro</h1>
+  <p>Los mejores productos con garantía y envío rápido</p>
 </section>
 
-<!-- ADSENSE -->
-<ins class="adsbygoogle"
-style="display:block;margin:30px 0"
-data-ad-client="ca-pub-8763788932694623"
-data-ad-slot="1234567890"
-data-ad-format="auto"
-data-full-width-responsive="true"></ins>
-<script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
-
-<h2>Productos destacados</h2>
-<div class="products" id="products"></div>
-
-<section class="text-block">
-<h2>Sobre JMR Asociados</h2>
-<p>
-Somos una tienda tecnológica digital enfocada en ofrecer productos modernos,
-pagos seguros y una experiencia de compra confiable.
-</p>
-</section>
-
-<section class="text-block">
-<h2>Términos y Condiciones</h2>
-<p>
-El uso de este sitio implica la aceptación de los términos.
-Los pagos se procesan mediante PayPal.
-</p>
-</section>
-
-<section class="text-block">
-<h2>Política de Privacidad</h2>
-<p>
-Google AdSense puede usar cookies para mostrar anuncios relevantes.
-No compartimos información personal.
-</p>
-</section>
-
-<section class="text-block">
-<h2>Envíos y Devoluciones</h2>
-<p>
-Procesamos pedidos en 24 a 72 horas hábiles.
-Aceptamos devoluciones por defectos dentro de 7 días.
-</p>
-</section>
-
-</main>
+<div class="container">
+  <h2 style="text-align:center;margin-bottom:30px;color:#0a66c2">Productos Destacados</h2>
+  <div class="products" id="products"></div>
+</div>
 
 <footer>
-© <span id="year"></span> JMR Asociados · Pagos seguros con PayPal
+  © <span id="year"></span> JMR Asociados — Todos los derechos reservados
 </footer>
 
-<!-- CARRITO -->
-<div id="cartModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;align-items:center;justify-content:center">
-<div style="background:#fff;padding:20px;border-radius:14px;width:90%;max-width:420px">
-<h3>🛒 Tu carrito</h3>
-<div id="cartItems"></div>
-<p><strong>Total: $<span id="cartTotal">0.00</span></strong></p>
-<div id="paypal-container-LPVYHJGP49RU2"></div>
-<button onclick="closeCart()" style="margin-top:15px;width:100%;padding:10px;border-radius:8px;border:0">Cerrar</button>
+<!-- MODAL -->
+<div class="modal" id="cartModal">
+  <div class="modal-content">
+    <h2>🛒 Tu Carrito</h2>
+    <div id="cartItems"></div>
+    <h3>Total: $<span id="cartTotal">0.00</span></h3>
+    <button class="close" onclick="closeCart()">Cerrar</button>
+  </div>
 </div>
-</div>
-
-<!-- PAYPAL -->
-<script src="https://www.paypal.com/sdk/js?client-id=BAA6ZU-KCINuUCO08grbktC7CSNvcgnBwTKyKwNYqK3Z_xywYINjK1NNtrFh3PZurwVS-1P6l-srWBLltU&components=hosted-buttons&currency=USD"></script>
 
 <script>
-paypal.HostedButtons({
-  hostedButtonId:"LPVYHJGP49RU2"
-}).render("#paypal-container-LPVYHJGP49RU2");
-
 const productos=[
-{id:1,titulo:"Laptop moderna",precio:829.99,img:"https://images.unsplash.com/photo-1517336714731-489689fd1ca8"},
-{id:2,titulo:"Smartphone elegante",precio:499.99,img:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9"},
-{id:3,titulo:"Auriculares Bluetooth",precio:79.99,img:"https://images.unsplash.com/photo-1580894732444-8ecded7900cd"},
-{id:4,titulo:"Smartwatch moderno",precio:199.99,img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30"}
+ {id:1,titulo:"Laptop Profesional HP",precio:829.99,img:"https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600",desc:"Intel i7, 16GB RAM, 512GB SSD"},
+ {id:2,titulo:"iPhone 14 Pro",precio:999.99,img:"https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?auto=compress&cs=tinysrgb&w=600",desc:"128GB, Cámara 48MP"},
+ {id:3,titulo:"Sony WH-1000XM5",precio:349.99,img:"https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=600",desc:"Cancelación de ruido"},
+ {id:4,titulo:"Apple Watch Series 9",precio:429.99,img:"https://images.pexels.com/photos/437037/pexels-photo-437037.jpeg?auto=compress&cs=tinysrgb&w=600",desc:"GPS y salud"},
+ {id:5,titulo:"iPad Pro 12.9",precio:1099.99,img:"https://images.pexels.com/photos/1334597/pexels-photo-1334597.jpeg?auto=compress&cs=tinysrgb&w=600",desc:"Chip M2"},
+ {id:6,titulo:"Galaxy S24 Ultra",precio:1199.99,img:"https://images.pexels.com/photos/1092644/pexels-photo-1092644.jpeg?auto=compress&cs=tinysrgb&w=600",desc:"200MP"},
+ {id:7,titulo:"MacBook Pro 14",precio:1999.99,img:"https://images.pexels.com/photos/812264/pexels-photo-812264.jpeg?auto=compress&cs=tinysrgb&w=600",desc:"M3 Pro"},
+ {id:8,titulo:"AirPods Pro 2",precio:249.99,img:"https://images.pexels.com/photos/3780681/pexels-photo-3780681.jpeg?auto=compress&cs=tinysrgb&w=600",desc:"USB-C"}
 ];
 
 const productsEl=document.getElementById("products");
-const cartCount=document.getElementById("cartCount");
+const cartModal=document.getElementById("cartModal");
 const cartItems=document.getElementById("cartItems");
 const cartTotal=document.getElementById("cartTotal");
-const modal=document.getElementById("cartModal");
+const cartCount=document.getElementById("cartCount");
 document.getElementById("year").textContent=new Date().getFullYear();
 
 let cart=[];
 
-function renderProducts(list){
-  productsEl.innerHTML="";
-  list.forEach(p=>{
-    productsEl.innerHTML+=`
-    <div class="card">
-      <img src="${p.img}">
-      <div class="info">
-        <strong>${p.titulo}</strong>
-        <div class="price">$${p.precio}</div>
-        <button class="add" onclick="addToCart(${p.id})">Agregar</button>
-      </div>
-    </div>`;
-  });
+function renderProducts(){
+ productsEl.innerHTML="";
+ productos.forEach(p=>{
+  productsEl.innerHTML+=`
+  <div class="card">
+    <img src="${p.img}">
+    <div class="info">
+      <h3>${p.titulo}</h3>
+      <p>${p.desc}</p>
+      <div class="price">$${p.precio}</div>
+      <button class="add" onclick="addToCart(${p.id})">Agregar</button>
+    </div>
+  </div>`;
+ });
 }
 
 function addToCart(id){
-  cart.push(productos.find(p=>p.id===id));
-  cartCount.textContent=cart.length;
+ cart.push(productos.find(p=>p.id===id));
+ cartCount.textContent=cart.length;
 }
 
 document.getElementById("cartBtn").onclick=()=>{
-  cartItems.innerHTML="";
-  let total=0;
+ cartItems.innerHTML="";
+ let total=0;
+ if(cart.length===0){
+  cartItems.innerHTML="<p>Carrito vacío</p>";
+ }else{
   cart.forEach(p=>{
     total+=p.precio;
-    cartItems.innerHTML+=`<p>${p.titulo} - $${p.precio}</p>`;
+    cartItems.innerHTML+=`<div class="cart-item"><span>${p.titulo}</span><strong>$${p.precio}</strong></div>`;
   });
-  cartTotal.textContent=total.toFixed(2);
-  modal.style.display="flex";
+ }
+ cartTotal.textContent=total.toFixed(2);
+ cartModal.style.display="flex";
 };
 
-function closeCart(){modal.style.display="none";}
+function closeCart(){cartModal.style.display="none"}
 
-renderProducts(productos);
+renderProducts();
 </script>
 
 </body>
